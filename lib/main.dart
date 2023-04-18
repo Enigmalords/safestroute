@@ -94,7 +94,7 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Google Maps'),
+        title: Text('Enigma Maps'),
       ),
       body: Column(
         children: [
@@ -131,6 +131,8 @@ class MapSampleState extends State<MapSample> {
                   _goToPlace(
                     directions['start_location']['lat'],
                     directions['start_location']['lng'],
+                    directions['end_location']['lat'],
+                    directions['end_location']['lng'],
                     directions['bounds_ne'],
                     directions['bounds_sw'],
                   );
@@ -168,6 +170,8 @@ class MapSampleState extends State<MapSample> {
     // Map<String, dynamic> place,
     double lat,
     double lng,
+    double destlat,
+    double destlng,
     Map<String, dynamic> boundsNe,
     Map<String, dynamic> boundsSw,
   ) async {
@@ -188,5 +192,6 @@ class MapSampleState extends State<MapSample> {
           25),
     );
     _setMarker(LatLng(lat, lng));
+    _setMarker(LatLng(destlat, destlng));
   }
 }
